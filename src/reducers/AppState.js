@@ -6,6 +6,10 @@ const INITIAL_STATE = {
 
 function appState(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case "LOGIN_REQUEST":
+      return Object.assign({}, state, {
+        loginLoader: true
+      });
     case "LOGIN_SUCCESS":
       return Object.assign({}, state, {
         loginData: action.payload,

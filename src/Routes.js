@@ -1,8 +1,9 @@
 import React from "react";
 import { Scene, Router, Stack } from "react-native-router-flux";
 import { connect } from "react-redux";
-import Login from "./containers/Login";
-import Dashboard from "./containers/Dashboard";
+import Login from "./containers/LoginContainer";
+import Dashboard from "./containers/DashboardContainer";
+import ListContainer from "./containers/ListContainer";
 
 class Routes extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Routes extends React.Component {
             swipeEnabled={false}
             title={"Dashboard"}
           />
+          <Scene key="list" hideNavBar component={ListContainer} />
         </Scene>
       </Router>
     );
