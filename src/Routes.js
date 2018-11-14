@@ -1,10 +1,12 @@
 import React from "react";
-import { Scene, Router, Stack } from "react-native-router-flux";
+import { Scene, Router, Stack, Drawer, Tabs } from "react-native-router-flux";
 import { connect } from "react-redux";
 import Login from "./containers/LoginContainer";
-import Dashboard from "./containers/DashboardContainer";
+import HistoryComponent from "./containers/HistoryContainer";
 import ListContainer from "./containers/ListContainer";
-
+import DrawerComponent from "./components/Drawer";
+import Settings from "./containers/SettingsContainer";
+import Tab1 from "./containers/Tab1";
 class Routes extends React.Component {
   constructor(props) {
     super(props);
@@ -25,13 +27,26 @@ class Routes extends React.Component {
               swipeEnabled={false}
             />
           </Stack>
-          <Scene
-            key="dashboard"
-            component={Dashboard}
-            swipeEnabled={false}
-            title={"Dashboard"}
-          />
-          <Scene key="list" hideNavBar component={ListContainer} />
+
+          <Scene key="main" hideNavBar>
+            <Drawer
+              key="drawer"
+              // drawerWidth={width * 0.65}
+              hideNavBar
+              contentComponent={DrawerComponent}
+              initial
+            >
+              <Scene key="list" hideNavBar component={ListContainer} />
+              <Scene
+                hideNavBar
+                key="history"
+                component={HistoryComponent}
+                swipeEnabled={false}
+              />
+              <Scene key="settings" hideNavBar component={Settings} />
+              <Scene key="tab1" hideNavBar component={Tab1} />
+            </Drawer>
+          </Scene>
         </Scene>
       </Router>
     );

@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
+import Header from "../components/Header";
 
-class Dashboard extends Component {
+class Settings extends Component {
   render() {
     return (
       <View
         style={{
-          flex: 1,
-          backgroundColor: "white",
-          alignItems: "center",
-          justifyContent: "center"
+          flex: 1
         }}
       >
-        <Text>Dashboard Container</Text>
+        <View style={{ flex: 0.1, backgroundColor: "red" }}>
+          <Header heading={"History"} />
+        </View>
+        <View style={{ flex: 0.8 }}>
+          <Text>Settings Container</Text>
+        </View>
       </View>
     );
   }
@@ -26,4 +29,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {}
-)(Dashboard);
+)(Settings);

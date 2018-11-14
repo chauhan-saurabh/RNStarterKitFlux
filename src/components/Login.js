@@ -5,11 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  ActivityIndicator
+  ActivityIndicator,
+  Dimensions
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { login } from "../actions/AuthAction";
+const { height, width } = Dimensions.get("window");
 
 class Login extends Component {
   constructor(props) {
@@ -54,20 +56,39 @@ class Login extends Component {
           }}
           placeholder="password"
         />
-        {this.props.loginReducer.loginLoader ? (
-          <TouchableOpacity style={{ margin: 10, alignItems: "center" }}>
-            <ActivityIndicator />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            style={{ margin: 10, alignItems: "center" }}
-            onPress={() => {
-              this.handleSubmit();
-            }}
-          >
-            <Text style={{ margin: 10 }}>Login</Text>
-          </TouchableOpacity>
-        )}
+        <View
+          style={{
+            flex: 0.1,
+            backgroundColor: "#0080ff",
+            width: width * 0.5,
+            justifyContent: "center",
+            alignSelf: "center",
+            borderRadius: width * 0.02
+          }}
+        >
+          {this.props.loginReducer.loginLoader ? (
+            <TouchableOpacity style={{ margin: 10, alignItems: "center" }}>
+              <ActivityIndicator />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={{ margin: 10, alignItems: "center" }}
+              onPress={() => {
+                this.handleSubmit();
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: width * 0.04,
+                  textAlign: "center",
+                  fontWeight: "bold"
+                }}
+              >
+                Login
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
     );
   }
@@ -77,7 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#bfb6ad"
   }
 });
 
