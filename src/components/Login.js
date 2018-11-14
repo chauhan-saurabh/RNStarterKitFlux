@@ -56,7 +56,6 @@ class Login extends Component {
             style={{
               margin: 10,
               borderBottomColor: "#dadada",
-              borderBottomWidth: 1,
               fontSize: width * 0.04
             }}
             value={this.state.email}
@@ -92,7 +91,6 @@ class Login extends Component {
             style={{
               margin: 10,
               borderBottomColor: "#dadada",
-              borderBottomWidth: 1,
               fontSize: width * 0.04
             }}
             value={this.state.password}

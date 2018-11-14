@@ -13,9 +13,7 @@ import Header from "../components/Header";
 import { userList } from "../actions/ListAction";
 
 class Tab1 extends Component {
-  componentWillMount() {
-    this.props.userList();
-  }
+
 
   render() {
     return (
